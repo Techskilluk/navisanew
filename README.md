@@ -12,7 +12,7 @@ There are several ways of editing your application.
 
 Simply visit the GPT Engineer project at [GPT Engineer](https://gptengineer.app/projects/dedf1346-02b9-4baa-9273-6df78b702788/improve) and start prompting.
 
-Changes made via gptengineer.app will be committed automatically to this repo.
+Changes made via gptengineer.app will b e committed automatically to this repo.
 
 **Use your preferred IDE**
 
