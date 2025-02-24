@@ -1,4 +1,4 @@
-import { EligibilityData } from "../EligibilityForm";
+import { EligibilityData } from '../EligibilityForm';
 
 interface SummaryProps {
   data: Partial<EligibilityData>;
@@ -6,17 +6,17 @@ interface SummaryProps {
 
 const Summary = ({ data }: SummaryProps) => {
   return (
-    <div className="space-y-6">
+    <div className='space-y-6'>
       <div>
-        <h2 className="text-2xl font-semibold mb-2">Summary</h2>
-        <p className="text-muted-foreground">Review your information before submission.</p>
+        <h2 className='text-2xl font-semibold mb-2'>Summary</h2>
+        <p className='text-muted-foreground'>Review your information before submission.</p>
       </div>
 
-      <div className="space-y-6">
+      <div className='space-y-6'>
         {data.personalInfo && (
           <div>
-            <h3 className="font-semibold mb-2">Personal Information</h3>
-            <div className="space-y-1">
+            <h3 className='font-semibold mb-2'>Personal Information</h3>
+            <div className='space-y-1'>
               <p>Name: {data.personalInfo.fullName}</p>
               <p>Email: {data.personalInfo.email}</p>
               <p>Nationality: {data.personalInfo.nationality}</p>
@@ -27,8 +27,8 @@ const Summary = ({ data }: SummaryProps) => {
 
         {data.education && (
           <div>
-            <h3 className="font-semibold mb-2">Education</h3>
-            <div className="space-y-1">
+            <h3 className='font-semibold mb-2'>Education</h3>
+            <div className='space-y-1'>
               <p>Degree: {data.education.degree}</p>
               <p>Field: {data.education.field}</p>
               <p>Institution: {data.education.institution}</p>
@@ -39,10 +39,10 @@ const Summary = ({ data }: SummaryProps) => {
 
         {data.experience && (
           <div>
-            <h3 className="font-semibold mb-2">Experience</h3>
-            <div className="space-y-1">
-              <p>Years of Experience: {data.experience.yearsOfExperience}</p>
-              <p>Current Role: {data.experience.currentRole}</p>
+            <h3 className='font-semibold mb-2'>Experience</h3>
+            <div className='space-y-1'>
+              <p>Years of Experience: {data.experience.years}</p>
+              <p>Current Role: {data.experience.position}</p>
               <p>Industry: {data.experience.industry}</p>
             </div>
           </div>
@@ -50,13 +50,10 @@ const Summary = ({ data }: SummaryProps) => {
 
         {data.skills && data.skills.length > 0 && (
           <div>
-            <h3 className="font-semibold mb-2">Skills</h3>
-            <div className="flex flex-wrap gap-2">
+            <h3 className='font-semibold mb-2'>Skills</h3>
+            <div className='flex flex-wrap gap-2'>
               {data.skills.map((skill, index) => (
-                <span
-                  key={index}
-                  className="bg-secondary px-3 py-1 rounded-full text-sm"
-                >
+                <span key={index} className='bg-secondary px-3 py-1 rounded-full text-sm'>
                   {skill}
                 </span>
               ))}
@@ -66,12 +63,12 @@ const Summary = ({ data }: SummaryProps) => {
 
         {data.achievements && data.achievements.length > 0 && (
           <div>
-            <h3 className="font-semibold mb-2">Achievements</h3>
-            <div className="space-y-4">
+            <h3 className='font-semibold mb-2'>Achievements</h3>
+            <div className='space-y-4'>
               {data.achievements.map((achievement, index) => (
-                <div key={index} className="space-y-1">
-                  <p className="font-medium">{achievement.type}</p>
-                  <p className="text-muted-foreground">{achievement.description}</p>
+                <div key={index} className='space-y-1'>
+                  <p className='font-medium'>{achievement.type}</p>
+                  <p className='text-muted-foreground'>{achievement.description}</p>
                 </div>
               ))}
             </div>
@@ -80,13 +77,10 @@ const Summary = ({ data }: SummaryProps) => {
 
         {data.preferredCountries && data.preferredCountries.length > 0 && (
           <div>
-            <h3 className="font-semibold mb-2">Preferred Countries</h3>
-            <div className="flex flex-wrap gap-2">
+            <h3 className='font-semibold mb-2'>Preferred Countries</h3>
+            <div className='flex flex-wrap gap-2'>
               {data.preferredCountries.map((country, index) => (
-                <span
-                  key={index}
-                  className="bg-secondary px-3 py-1 rounded-full text-sm"
-                >
+                <span key={index} className='bg-secondary px-3 py-1 rounded-full text-sm'>
                   {country}
                 </span>
               ))}

@@ -1,4 +1,4 @@
-import { ThemeSupa } from "@supabase/auth-ui-shared";
+import { ThemeSupa } from '@supabase/auth-ui-shared';
 
 export const authUiConfig = {
   theme: ThemeSupa,
@@ -37,7 +37,7 @@ export const authUiConfig = {
   className: {
     container: 'space-y-6',
     button: 'w-full bg-primary text-white hover:bg-[#9b87f5] transition-all duration-300 font-medium',
-    input: 'w-full border-secondary hover:border-accent focus:border-accent transition-colors duration-300',
+    input: 'w-full border-secondary  hover:border-accent focus:border-primary transition-colors duration-300',
     label: 'text-sm font-medium text-primary',
     message: 'text-sm text-muted',
     anchor: 'text-accent hover:text-accent/80 transition-colors duration-300',
