@@ -24,6 +24,8 @@ const Dashboard = () => {
   const location = useLocation();
   const submission = location.state?.documentSubmission;
 
+  const [applicationStage, setApplicationStage] = useState(null);
+
   const [chartData, setChartData] = useState([]);
 
   if (!user) {
@@ -35,6 +37,13 @@ const Dashboard = () => {
       // if (assessmentResult.data) {
 
       // }
+
+      const { data } = await supabase.from('application_trackings').select('*').eq('email', user.email).single();
+      if (data) {
+        setApplicationStage(data);
+      }
+
+      console.log(data);
 
       const response = await GET_REQUEST(EndPoints.score, session.access_token);
 
@@ -91,7 +100,7 @@ const Dashboard = () => {
         </div>
 
         {/* Timeline, Active Applications, and Resources */}
-        <div className='grid grid-cols-1 lg:grid-cols-3 gap-6'>
+        <div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6'>
           <div className='lg:col-span-1'>
             <TimelineSection />
           </div>
@@ -102,13 +111,21 @@ const Dashboard = () => {
               <CardDescription>Track your ongoing applications</CardDescription>
             </CardHeader>
             <CardContent className='flex flex-col items-center justify-center min-h-[300px] text-center'>
-              {submission ? (
+              {applicationStage ? (
                 <div className='text-left w-full space-y-4'>
-                  <div className='flex items-center gap-4'>
+                  <div className='flex items-start gap-4'>
                     <div className='w-2 h-2 bg-[#28A745] rounded-full' />
-                    <div>
-                      <p className='font-medium'>{submission.visaType}</p>
-                      <p className='text-sm text-muted-foreground'>Submitted on {submission.timestamp}</p>
+                    <div className=' flex-1 -mt-2'>
+                      <p className='font-medium'>{applicationStage.visa_type}</p>
+                      <div>
+                        <p className='text-base flex items-start gap-1'>
+                          {applicationStage.stage}{' '}
+                          <span className=' text-xs'>{applicationStage.status.toLowerCase()}</span>
+                        </p>
+                        <p className='text-sm text-muted-foreground'>
+                          Submitted on: {new Date(applicationStage.updated_at as string).toDateString()}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>

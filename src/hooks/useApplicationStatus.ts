@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { supabase } from "@/integrations/supabase/client";
+import { useState, useEffect } from 'react';
+import { supabase } from '@/integrations/supabase/client';
 
 interface Stage {
   label: string;
@@ -30,30 +30,34 @@ export const useApplicationStatus = (userId: string | undefined) => {
     }
 
     const latestDocument = documents?.[0];
-    
+
     setStages([
       {
-        label: "Documents Uploaded",
-        status: latestDocument ? "completed" : "pending",
+        label: 'Documents Uploaded',
+        status: latestDocument ? 'completed' : 'pending',
         timestamp: latestDocument?.created_at,
-        tooltip: "All required documents have been successfully uploaded"
+        tooltip: 'All required documents have been successfully uploaded',
       },
       {
-        label: "Expert Review",
-        status: latestDocument?.status === 'pending' ? "active" : 
-               latestDocument?.status === 'approved' ? "completed" : "pending",
-        tooltip: "Documents currently under review by our team"
+        label: 'Expert Review',
+        status:
+          latestDocument?.status === 'pending'
+            ? 'active'
+            : latestDocument?.status === 'approved'
+            ? 'completed'
+            : 'pending',
+        tooltip: 'Documents currently under review by our team',
       },
       {
-        label: "Application Submitted",
-        status: latestDocument?.status === 'approved' ? "completed" : "pending",
-        tooltip: "Review completion status"
+        label: 'Application Submitted',
+        status: latestDocument?.status === 'approved' ? 'completed' : 'pending',
+        tooltip: 'Review completion status',
       },
       {
-        label: "Final Result",
-        status: latestDocument?.status === 'approved' ? "active" : "pending",
-        tooltip: "Awaiting final visa decision"
-      }
+        label: 'Final Result',
+        status: latestDocument?.status === 'approved' ? 'active' : 'pending',
+        tooltip: 'Awaiting final visa decision',
+      },
     ]);
   };
 
@@ -69,7 +73,7 @@ export const useApplicationStatus = (userId: string | undefined) => {
           event: '*',
           schema: 'public',
           table: 'documents',
-          filter: `user_id=eq.${userId}`
+          filter: `user_id=eq.${userId}`,
         },
         () => {
           console.log('Document status changed, refreshing...');

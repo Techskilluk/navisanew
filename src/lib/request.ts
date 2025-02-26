@@ -19,7 +19,7 @@ export const GET_REQUEST = async (url: string, auth_token?: string) => {
 
 export const POST_REQUEST = async (
   url: string,
-  data: Record<string, unknown>,
+  data: Record<string, unknown> | FormData,
   auth_token?: string,
   contentType?: string
 ) => {
